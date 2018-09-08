@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import firebase from "firebase";
 
 class App extends Component {
+  state = { img: "" };
+  componentDidMount() {
+    firebase.database().ref("/current").on('value',child =>{
+      this.setState({
+        img : child.val().url
+      })
+    })
+    
+  }
   render() {
     return (
+      this.state.img ? 
       <div className="App">
-        <img className="app-img" src="https://firebasestorage.googleapis.com/v0/b/monster-hunt-ar.appspot.com/o/Screenshot_1536333050.png?alt=media&token=eddd90a9-6bc6-42b1-8d55-730b246294f5" alt="New file" />
-      </div>
+        <img className="app-img" src={this.state.img} alt="Barcode"  />
+      </div>:
+      <div></div> 
     );
   }
 }

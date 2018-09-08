@@ -1,8 +1,8 @@
 .App {
   text-align: center;
-  background-color : rgb(128, 123, 123)
+  margin-top : 10vh;
 }
 
 .app-img {
-  height: 100vh;
+  height: 75vh;
 }
